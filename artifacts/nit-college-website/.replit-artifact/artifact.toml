@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "NiT College Website"
+description = "A modern, responsive college information website for NiT College, helping prospective students, families, current students, and faculty explore admissions, academics, campus life, news, events, and campus visits."
+version = "1.0.0"
+id = "artifacts/nit-college-website"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20998
+
+[services.development]
+run = "pnpm --filter @workspace/nit-college-website run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/nit-college-website", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/nit-college-website/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20998"
+BASE_PATH = "/"
