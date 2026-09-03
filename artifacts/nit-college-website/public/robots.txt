@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace the placeholder host before production deployment.
+Sitemap: https://YOUR_NIT_PRODUCTION_DOMAIN.example/sitemap.xml
